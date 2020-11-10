@@ -1,10 +1,6 @@
-# Getting Started with Create React App
+# BuildOps Full-Stack Coding Test
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
+## Development
 
 ### `npm start`
 
@@ -16,8 +12,7 @@ You will also see any lint errors in the console.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner in the interactive watch mode.
 
 ### `npm run build`
 
@@ -25,9 +20,6 @@ Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ### `npm run eject`
 
@@ -39,32 +31,42 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Deployment
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### `npm install -g @aws-amplify/cli`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Installs the Amplify CLI globally (you might need to run the command above with `sudo`).
 
-### Code Splitting
+### `amplify configure`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Configures Amplify and creates an IAM user.
 
-### Analyzing the Bundle Size
+### `amplify push`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Deploys the backend.
 
-### Making a Progressive Web App
+### `amplify add hosting`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Adds hosting to your app.
 
-### Advanced Configuration
+### `amplify publish`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Publishes your app.
 
-### Deployment
+## Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+This project implements CRUD queries to support Employee and Skill schema.
 
-### `npm run build` fails to minify
+Click `Employees` to display all records of employees with avatar, first name, last name, full name, skills (a list of skills that the employee has), created at and updated at.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Click `Skills` to display all records of skills with name and employees (a list of employees that have the skill).
+
+Click `Create Employee` to create a new record of employee by entering first name, last name, and choosing from existing skills (first name and last name cannot be empty).
+
+Click `Create Skill` to create a new record of skill by entering name (name cannot be empty).
+
+For each record of employee or skill, click `Update` to update the record (same rules apply here) or click `Delete` to delete the record.
+
+The notification badge counts the number of create/update/delete, i.e. mutations, during the current visit. Click it to mark as read.
+
+The account badge is reserved for login functionality in the future development.
