@@ -1,0 +1,25 @@
+type Employee @model {
+  id: ID!
+  firstname: String!
+  lastname: String!
+  skills: [EmployeeSkillConnection]
+    @connection(keyName: "byEmployee", fields: ["id"])
+}
+
+type Skill @model {
+  id: ID!
+  name: String!
+  employees: [EmployeeSkillConnection]
+    @connection(keyName: "bySkill", fields: ["id"])
+}
+
+type EmployeeSkillConnection
+  @model(queries: null)
+  @key(name: "byEmployee", fields: ["employeeID", "skillID"])
+  @key(name: "bySkill", fields: ["skillID", "employeeID"]) {
+  id: ID!
+  employeeID: ID!
+  skillID: ID!
+  employee: Employee! @connection(fields: ["employeeID"])
+  skill: Skill! @connection(fields: ["skillID"])
+}

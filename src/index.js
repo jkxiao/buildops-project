@@ -1,14 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import Amplify from "aws-amplify";
+import awsExports from "./aws-exports";
+Amplify.configure(awsExports);
+
+const client = new ApolloClient({
+  uri:
+    "https://i75mdxqrnbfn5mki4i2rtfauhy.appsync-api.us-west-2.amazonaws.com/graphql",
+  headers: {
+    "X-Api-Key": "da2-ougpls7pbvb25ihkxx47wue6h4",
+  },
+  cache: new InMemoryCache(),
+});
 
 ReactDOM.render(
-  <React.StrictMode>
+  <ApolloProvider client={client}>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </ApolloProvider>,
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
